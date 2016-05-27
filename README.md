@@ -70,9 +70,21 @@ avaamo.SendAttachment(conversation, file);
 ```c#
 Avaamo.Card card = new Avaamo.Card("Card Title", "Card Description. This has minimal rich text capabilities as well. For example <b>Bold</b> <i>Italics</i>");
 card.addShowCaseImage("C:\\Users\\User1\\Downloads\\rocket.jpg");
-card.addLink("Google", "web_page", "http://google.com");
-card.addLink("Facebook", "web_page", "http://facebook.com");
+
+// Web page link
+Avaamo.Links.Web web_link = new Avaamo.Links.Web("Google", "https://google.com");
+card.addLink(web_link);
+
+//Send Message Link
+Avaamo.Links.SendMessage message_link = new Avaamo.Links.SendMessage("Post Message", "Sample Message");
+card.addLink(message_link);
+
+//Form link
+Avaamo.Links.FormLink form_link = new Avaamo.Links.FormLink("Submit Form", "d6c32cd0-a092-4f5b-dd68-ec5eb2049b82", "Form Name");
+card.addLink(form_link);
+
 avaamo.SendCard(conversation, card);
+
 ```
 ![image](screenshots/card.png)
 
