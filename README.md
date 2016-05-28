@@ -10,7 +10,7 @@ Avaamo C# Bot SDK is a single nuget package file, Avaamo.1.0.0.0.nupkg
 
 #### Sample Bot
 
-This [file](https://github.com/avaamo/c-sharp/blob/master/BotSample.zip?raw=true) has the full C# Console project for bot implementation.
+This [file](https://github.com/avaamo/c-sharp/blob/master/bot_sample.cs?raw=true) has the full C# code for Bot implementation.
 
 #### Receiving Messages
 
