@@ -10,7 +10,7 @@ Avaamo C# Bot SDK is a single nuget package file, Avaamo.1.0.0.0.nupkg
 
 #### Sample Bot
 
-This [file](https://github.com/avaamo/c-sharp/blob/master/SampleBot.cs?raw=true) has the full example referred in this page.
+This [file](https://github.com/avaamo/c-sharp/blob/master/BotSample.zip?raw=true) has the full C# Console project for bot implementation.
 
 #### Receiving Messages
 
@@ -37,7 +37,7 @@ static void ProcessMessage(object sender, Avaamo.MessageArgs e)
     Console.WriteLine("Got Message");
     Console.WriteLine(message);
     Avaamo.Client avaamo = e.Client();
-    Console.WriteLine(message.content);a
+    Console.WriteLine(message.content);
 }
 
 ```
@@ -60,7 +60,7 @@ avaamo.SendAttachment(conversation, img);
 #### Sending a file
 
 ```c#
-Avaamo.File file = new Avaamo.File("C:\\Users\\User1\\Downloads\\notes.pdf");
+Avaamo.File file = new Avaamo.File("C:\\Users\\User1\\Downloads\\TestFile.txt");
 avaamo.SendAttachment(conversation, file);
 ```
 ![image](screenshots/file.png)
