@@ -3,12 +3,21 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
+using Avaamo;
 
 namespace BotSample
 {
     class Program
     {
-        private Avaamo.Client client;
+
+        static void ProcessReadAck(object sender, Avaamo.ReadAckArgs e)
+        {
+            Console.WriteLine("ACK received");
+            Avaamo.ReadAckModel ack_model = e.ReadAckModel();
+            Console.WriteLine(ack_model.user.firstName);
+            Console.WriteLine(ack_model.read_ack.message_uuid);
+        }
+
         static void ProcessMessage(object sender, Avaamo.MessageArgs e)
         {
             string imagePath = "C:\\Users\\User1\\Downloads\\rocket.jpg";
@@ -73,6 +82,9 @@ namespace BotSample
 
             // Assign the message handler
             avaamo.MessageHandeler += new Avaamo.MessageHandeler(ProcessMessage);
+
+            // Assign Read Acknowledgemt handler
+            avaamo.ReadAckHandler += new Avaamo.ReadAckHandler(ProcessReadAck);
 
             // Connect to avaamo server
             avaamo.Connect();
