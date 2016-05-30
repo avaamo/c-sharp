@@ -25,7 +25,11 @@ Initialize the library with your BOT UUID and Access Token.
 static void Main(string[] args)
 {
     Avaamo.Client avaamo = new Avaamo.Client(<YOUR-BOT-UUID>, <YOUR-BOT-ACCESS-TOKEN>);
+    // Handle incoming messages
     avaamo.MessageHandeler += new Avaamo.MessageHandeler(ProcessMessage);
+    // Handle incoming message read acknowledgment
+    avaamo.ReadAckHandler += new Avaamo.ReadAckHandler(ProcessReadAck);
+    //Connect avaamo client
     avaamo.Connect();
 }
 
@@ -38,6 +42,13 @@ static void ProcessMessage(object sender, Avaamo.MessageArgs e)
     Console.WriteLine(message);
     Avaamo.Client avaamo = e.Client();
     Console.WriteLine(message.content);
+}
+
+static void ProcessReadAck(object sender, Avaamo.ReadAckArgs e)
+{
+    Console.WriteLine("ACK received");
+    Avaamo.ReadAckModel ackModel = e.ReadAckModel();
+    Console.WriteLine("User "+ackModel.user.firstName+" has read the message: "+ack_model.read_ack.message_uuid);
 }
 
 ```
