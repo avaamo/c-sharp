@@ -29,6 +29,8 @@ static void Main(string[] args)
     avaamo.MessageHandeler += new Avaamo.MessageHandeler(ProcessMessage);
     // Handle incoming message read acknowledgment
     avaamo.ReadAckHandler += new Avaamo.ReadAckHandler(ProcessReadAck);
+    // Assign User Visited handler
+    avaamo.UserVisitedHandler += new Avaamo.UserVisitedHandler(HandleOnUserVisited);
     //Connect avaamo client
     avaamo.Connect();
 }
@@ -49,6 +51,13 @@ static void ProcessReadAck(object sender, Avaamo.ReadAckArgs e)
     Console.WriteLine("ACK received");
     Avaamo.ReadAckModel ackModel = e.ReadAckModel();
     Console.WriteLine("User "+ackModel.user.firstName+" has read the message: "+ack_model.read_ack.message_uuid);
+}
+
+static void HandleOnUserVisited(object sender, Avaamo.UserActivityArgs e)
+{
+    var activity = e.UserActivity();
+    var client = (Avaamo.Client)sender;
+    Console.WriteLine("User "+  activity.user.firstName + "has visited the bot.");
 }
 
 ```
