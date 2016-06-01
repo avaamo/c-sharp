@@ -98,6 +98,15 @@ namespace BotSample
 
         }
 
+        static void HandleOnUserVisited(object sender, Avaamo.UserActivityArgs e)
+        {
+            var activity = e.UserActivity();
+            var client = (Avaamo.Client)sender;
+            Console.WriteLine("Activity Recieved");
+            // Send Hello whenever user visit the bot
+            client.SendTextMessage(activity.conversation, "Hello");
+        }
+
         static void Main(string[] args)
         {
             string uuid = "<bot uuid>";
@@ -111,6 +120,9 @@ namespace BotSample
 
             // Assign Read Acknowledgemt handler
             avaamo.ReadAckHandler += new Avaamo.ReadAckHandler(ProcessReadAck);
+
+            // Assign User Visited handler
+            avaamo.UserVisitedHandler += new Avaamo.UserVisitedHandler(HandleOnUserVisited);
 
             // Connect to avaamo server
             avaamo.Connect();
