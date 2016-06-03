@@ -103,7 +103,7 @@ Avaamo.Links.SendMessage message_link = new Avaamo.Links.SendMessage("Post Messa
 card.addLink(message_link);
 
 //Form link
-Avaamo.Links.FormLink form_link = new Avaamo.Links.FormLink("Submit Form", "d6c32cd0-a092-4f5b-dd68-ec5eb2049b82", "Form Name");
+Avaamo.Links.FormLink form_link = new Avaamo.Links.FormLink("Submit Form", "8e893b85-f206-4156-ae49-e917d584bcf3", "Form Name");
 card.addLink(form_link);
 
 avaamo.SendCard(conversation, card);

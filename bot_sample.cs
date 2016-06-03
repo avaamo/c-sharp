@@ -69,7 +69,7 @@ namespace BotSample
                             card.addLink(message_link);
 
                             // Add link which opens the form and submit in the same conversation
-                            Avaamo.Links.FormLink form_link = new Avaamo.Links.FormLink("Submit Form", "d6c32cd0-a092-4f5b-dd68-ec5eb2049b82", "Form Name");
+                            Avaamo.Links.FormLink form_link = new Avaamo.Links.FormLink("Submit Form", "8e893b85-f206-4156-ae49-e917d584bcf3", "Rate Me");
                             card.addLink(form_link);
 
                             client.SendCard(message.conversation, card);
@@ -85,6 +85,17 @@ namespace BotSample
                     {
                         Console.WriteLine(q.title);
                         Console.WriteLine(q.answer);
+                        if(q.title == "Rating")
+                        {
+                            if(Int32.Parse(q.answer) <4 )
+                            {
+                                client.SendTextMessage(message.conversation, "Why so less?");
+                            }
+                            else
+                            {
+                                client.SendTextMessage(message.conversation, String.Format("Thank you for rating us with {0} stars", q.answer));
+                            }
+                        }
                         var files = q.Files();
                         Console.WriteLine("Assets Count: " + files.Count);
                         for (int i = 0; i < files.Count; i++)
