@@ -38,7 +38,9 @@ namespace BotSample
                             break;
                         case "image":
                             // Send Image Attachment without caption
-                            Avaamo.Image img = new Avaamo.Image(imagePath);
+                            Avaamo.Image img = new Avaamo.Image(new Uri("http://shepherdspiehole.typepad.com/.a/6a0167621b7ded970b017d3eba4c8a970c-pi"));
+                            // OR
+                            //Avaamo.Image img = new Avaamo.Image(imagePath);
                             client.SendAttachment(message.conversation, img);
                             break;
                         case "image and caption":
@@ -53,13 +55,20 @@ namespace BotSample
                             break;
                         case "card":
                             Avaamo.Card card = new Avaamo.Card("Hello", "descriptions <b>lols</b>");
-                            card.addShowCaseImage(imagePath);
+
+                            // Add showcase image for card
+                            Avaamo.Image showcase_image = new Avaamo.Image(new Uri("http://shepherdspiehole.typepad.com/.a/6a0167621b7ded970b017d3eba4c8a970c-pi"));
+                            card.addShowCaseImage(showcase_image);
+
+                            // Add Web page link to the card
                             Avaamo.Links.Web web_link = new Avaamo.Links.Web("Google", "https://google.com");
                             card.addLink(web_link);
 
+                            // Add Link which posts the message to the conversation
                             Avaamo.Links.SendMessage message_link = new Avaamo.Links.SendMessage("Post Message", "Sample");
                             card.addLink(message_link);
 
+                            // Add link which opens the form and submit in the same conversation
                             Avaamo.Links.FormLink form_link = new Avaamo.Links.FormLink("Submit Form", "d6c32cd0-a092-4f5b-dd68-ec5eb2049b82", "Form Name");
                             card.addLink(form_link);
 
