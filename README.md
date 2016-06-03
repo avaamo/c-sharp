@@ -4,8 +4,7 @@ Before start developing a bot you should first create a bot in the Avaamo Dashbo
 Follow the steps in this [Getting Started](https://github.com/avaamo/java/wiki) page to create a bot in the dashboard.
 
 ### Pre-requisite
-Visual Stidio 2012 or above
-.NET Framework 4.5.2
+Visual Stidio 2012 or above & .NET Framework 4.5.2
 
 #### Download and add library
 Avaamo C# Bot SDK is a single nuget package file, Avaamo.1.0.0.0.nupkg
