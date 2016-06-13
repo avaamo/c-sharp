@@ -127,13 +127,17 @@ namespace BotSample
             client.SendTextMessage(activity.conversation, "Hello");
         }
 
+
         static void Main(string[] args)
         {
             string uuid = "<bot uuid>";
             string access_token = "<bot access_token>";
 
-            // Create avaamo client
-            Avaamo.Client avaamo = new Avaamo.Client(uuid, access_token);
+            // Create avaamo client using websocket
+            Avaamo.Client avaamo = new Avaamo.Client(uuid, access_token, false);
+
+            // Using https polling
+            // Avaamo.Client avaamo = new Avaamo.Client(uuid, access_token, true);
 
             // Assign the message handler
             avaamo.MessageHandeler += new Avaamo.MessageHandeler(ProcessMessage);

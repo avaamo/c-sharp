@@ -27,7 +27,7 @@ Initialize the library with your BOT UUID and Access Token.
 
 static void Main(string[] args)
 {
-    Avaamo.Client avaamo = new Avaamo.Client(<YOUR-BOT-UUID>, <YOUR-BOT-ACCESS-TOKEN>);
+    Avaamo.Client avaamo = new Avaamo.Client(<YOUR-BOT-UUID>, <YOUR-BOT-ACCESS-TOKEN>, false);
     // Handle incoming messages
     avaamo.MessageHandeler += new Avaamo.MessageHandeler(ProcessMessage);
     // Handle incoming message read acknowledgment
@@ -111,3 +111,13 @@ avaamo.SendCard(conversation, card);
 ```
 ![image](screenshots/card.png)
 
+#### Sending message to user without incoming message using email/phone number.
+```c#
+//Getting conversation from user's email
+Avaamo.Conversation conversation = new Avaamo.Conversation(new Avaamo.Email("jalendra@avaamo.com"));
+avaamo.sendTextMessage(conversation, "Hello");
+
+//Getting conversation from user's phone
+Avaamo.Conversation conversation2 = new Avaamo.Conversation(new Avaamo.Phone("+919595134315")); 
+avaamo.sendTextMessage(conversation2, "Conversation");
+```
