@@ -28,6 +28,12 @@ Initialize the library with your BOT UUID and Access Token.
 static void Main(string[] args)
 {
     Avaamo.Client avaamo = new Avaamo.Client(<YOUR-BOT-UUID>, <YOUR-BOT-ACCESS-TOKEN>, false);
+
+    // With proxy
+    // System.Net.NetworkCredential credentials = new System.Net.NetworkCredential("username", "password");
+    // System.Net.WebProxy proxy = new System.Net.WebProxy("192.168.1.86:8080", true, null, credentials);
+    // Avaamo.Client avaamo = new Avaamo.Client("<Bot-UUID>", "<Bot-Access-Token>", true, proxy);
+
     // Handle incoming messages
     avaamo.MessageHandeler += new Avaamo.MessageHandeler(ProcessMessage);
     // Handle incoming message read acknowledgment
@@ -118,6 +124,6 @@ Avaamo.Conversation conversation = new Avaamo.Conversation(new Avaamo.Email("jal
 avaamo.sendTextMessage(conversation, "Hello");
 
 //Getting conversation from user's phone
-Avaamo.Conversation conversation2 = new Avaamo.Conversation(new Avaamo.Phone("+919595134315")); 
+Avaamo.Conversation conversation2 = new Avaamo.Conversation(new Avaamo.Phone("+919595134315"));
 avaamo.sendTextMessage(conversation2, "Conversation");
 ```
